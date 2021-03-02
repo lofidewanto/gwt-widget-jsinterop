@@ -10,6 +10,10 @@ document.onreadystatechange = function () {
 
         var element = document.getElementById("new");
         element.appendChild(tag);
+        
+        // This does not work... Cannot find the reference Calculator
+        var calculator = new Calculator("From JS withwait");
+        element.appendChild(calculator.getAsElement());
     }
 }
 
