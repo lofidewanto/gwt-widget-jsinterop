@@ -1,5 +1,18 @@
 // JS with wait until DOM finished
 
+// Function for waiting an object is available
+// See https://stackoverflow.com/questions/8618464/how-to-wait-for-another-js-to-load-to-proceed-operation
+function whenAvailable(name, callback) {
+    var interval = 10; // ms
+    window.setTimeout(function () {
+        if (window[name]) {
+            callback(window[name]);
+        } else {
+            whenAvailable(name, callback);
+        }
+    }, interval);
+}
+
 var tag = document.createElement("p");
 var text = document.createTextNode("Tutorix is the best e-learning platform in withwait");
 tag.appendChild(text);
@@ -10,10 +23,12 @@ document.onreadystatechange = function () {
 
         var element = document.getElementById("new");
         element.appendChild(tag);
-        
-        // This does not work... Cannot find the reference Calculator
-        var calculator = new Calculator("From JS withwait");
-        element.appendChild(calculator.getAsElement());
+
+        // Wait until Calculator available
+        whenAvailable("Calculator", function (t) {
+            var calculator = new Calculator("From JS withwait");
+            element.appendChild(calculator.getAsElement());
+        });
     }
 }
 

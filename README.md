@@ -11,6 +11,8 @@ Wrap GWT Widget with JsInterop
 
 - Calling a javascript function in another js file: https://stackoverflow.com/questions/25962958/calling-a-javascript-function-in-another-js-file
 
+- Waiting for an object: https://stackoverflow.com/questions/8618464/how-to-wait-for-another-js-to-load-to-proceed-operation
+
 To run the example just use Maven:
 
 ```
